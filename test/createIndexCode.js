@@ -40,7 +40,7 @@ export { default as foo } from './foo';
       expect(indexCode).to.equal(codeExample(`
 // @create-index
 
-export { default as foo } from './foo.js';
+export { default as foo } from './foo';
       `));
     });
   });

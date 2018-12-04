@@ -34,14 +34,14 @@ describe('writeIndex()', () => {
 // @create-index
 
 export { default as bar } from './bar';
-export { default as foo } from './foo.js';
+export { default as foo } from './foo';
     `));
   });
 
   it('creates index with config in target directory', () => {
     const indexFilePath = path.resolve(fixturesPath, 'with-config/index.js');
     // eslint-disable-next-line
-    const ignoredExportLine = `export { default as bar } from './bar.js';`;
+    const ignoredExportLine = `export { default as bar } from './bar';`;
 
     appendToFile(indexFilePath, ignoredExportLine);
     expect(readFile(indexFilePath).includes(ignoredExportLine)).to.equal(true);
@@ -52,7 +52,7 @@ export { default as foo } from './foo.js';
     expect(indexCode).to.equal(codeExample(`
 // @create-index {"ignore":["/bar.js$/"]}
 
-export { default as foo } from './foo.js';
+export { default as foo } from './foo';
     `));
   });
 });
